@@ -1,0 +1,29 @@
+doctype html
+html(lang="fr")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Mon E-Commerce - #{title}
+    link(href='/css/main.css' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans&display=swap' rel='stylesheet')
+  body
+    header
+      nav.navbar
+        a.navbar__brand(href='/') Mon E-Commerce
+        ul.navbar__nav
+          li.navbar__active
+            a(href='/') Accueil
+          li
+            a(href='#') Lien
+
+    div.container
+      main
+        block content
+
+      footer.footer
+        p 
+          | Vincent Lepelley - 2020 <br>
+          | Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam corrupti, culpa nam incidunt pariatur veritatis numquam suscipit repellat. Illum quasi commodi quidem harum ipsum dolore, vel in vitae odio animi!
+
+    block scripts
+    script(src=process.env.BROWSER_REFRESH_URL)

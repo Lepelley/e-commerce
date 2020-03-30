@@ -1,0 +1,19 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "Projet E-Commerce PRO-11",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "browser-refresh": "^1.7.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browser-refresh server.js"
+  },
+  "author": "Vincent Lepelley <vincent@lepelley.fr>",
+  "license": "ISC"
+}

@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(199, 199, 199);
+    margin: 0;
+    font-size: 1rem;
+    font-family: "Open Sans";
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    background: rgb(48, 48, 48);
+    display: flex;
+}
+
+.navbar__brand {
+    color: white;
+    height: 4rem;
+    line-height: 4rem;
+    margin-left: 2rem;
+}
+
+.navbar__nav {
+    display: flex;
+    list-style: none;
+}
+
+.navbar__nav li a {
+    color: white;
+    margin-right: 2rem;
+    line-height: 2rem;
+}
+
+.navbar__nav li a:hover {
+    text-decoration: underline;
+}
+
+.navbar__active {
+    text-shadow: 0 0 2px white;
+}
+
+.container {
+    width: 1200px;
+    margin: 2rem auto;
+}
+
+.footer {
+    text-align: center;
+}
