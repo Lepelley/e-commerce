@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  h1 Inscription
+
+  form(method='post')
+    p.form-group
+      label(for='form-email') Email
+      if exists
+        input.form-control.is-invalid(id='form-email' type='email' name='form_email' required)
+        span.invalid-feedback Un compte utilise déjà ce mail
+      else
+        input.form-control(id='form-email' type='email' name='form_email' required)
+
+    p.form-group
+      label(for='form-firstname') Prénom
+      input.form-control(id='form-firstname' type='text' name='form_firstname' required)
+    p.form-group
+      label(for='form-lastname') Nom de famille
+      input.form-control(id='form-lastname' type='text' name='form_lastname' required)
+    p.form-group
+      label(for='form-password') Mot de passe
+      input.form-control(id='form-password' type='password' name='form_password' required)
+    p
+      button.btn.btn-primary(type='submit') Confirmer

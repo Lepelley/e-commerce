@@ -1,4 +1,4 @@
 module.exports = {
   port: 3000,
-  database: 'mongodb://localhost:27017/restaurants'
+  mongodb: 'mongodb+srv://root:VdhrKsSY32ZxkD40@cluster0-0ubxs.mongodb.net/ecommerce?retryWrites=true&w=majority'
 }
