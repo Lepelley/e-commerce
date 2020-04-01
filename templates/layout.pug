@@ -15,8 +15,14 @@ html(lang="fr")
         ul.navbar-nav.mr-auto
           li.navbar-item.active
             a.nav-link(href='/') Accueil
-          li.navbar-item
-            a.nav-link(href='/register') Inscription
+          if session.user
+            li.navbar-item
+              a.nav-link(href='/logout') Déconnexion
+          else
+            li.navbar-item
+              a.nav-link(href='/register') Inscription
+            li.navbar-item
+              a.nav-link(href='/login') Connexion
 
     div.container
       main.mt-4.mb-4

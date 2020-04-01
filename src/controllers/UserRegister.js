@@ -1,6 +1,6 @@
 const UserRepository = require('../models/UserRepository')
 
-module.exports = class Register {
+module.exports = class UserRegister {
   print (request, response) {
     response.render('user/register')
   }
@@ -16,7 +16,12 @@ module.exports = class Register {
       request.flash('flash', 'La création de compte a été réussie !')
       response.redirect('/')
     } else {
-      response.render('user/register', { exists: true })
+      response.render('user/register', {
+        exists: true,
+        email: request.body.form_email,
+        firstname: request.body.form_firstname,
+        lastname: request.body.form_lastname
+      })
     }
   }
 }

@@ -8,4 +8,4 @@ const schema = new mongoose.Schema({
   date: { type: Date, default: Date.now }
 })
 
-module.exports = mongoose.model('Users', schema)
+module.exports = mongoose.model('User', schema)

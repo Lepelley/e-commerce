@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  h1 Connexion
+
+  form(method='post')
+    p.form-group
+      label(for='form-email') Email
+      if email
+        input#form-email.form-control.is-invalid(type='email' name='form_email' value=email required)
+        span.invalid-feedback Mauvais email ou mot de passe
+      else
+        input#form-email.form-control( type='email' name='form_email' required)
+    p.form-group
+      label(for='form-password') Mot de passe
+      input#form-password.form-control(type='password' name='form_password' required)
+
+    p
+      button.btn.btn-primary(type='submit') Se connecter

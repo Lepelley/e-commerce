@@ -7,17 +7,17 @@ block content
     p.form-group
       label(for='form-email') Email
       if exists
-        input.form-control.is-invalid(id='form-email' type='email' name='form_email' required)
+        input.form-control.is-invalid(id='form-email' type='email' name='form_email' value=email required)
         span.invalid-feedback Un compte utilise déjà ce mail
       else
         input.form-control(id='form-email' type='email' name='form_email' required)
 
     p.form-group
       label(for='form-firstname') Prénom
-      input.form-control(id='form-firstname' type='text' name='form_firstname' required)
+      input.form-control(id='form-firstname' type='text' name='form_firstname' value=firstname required)
     p.form-group
       label(for='form-lastname') Nom de famille
-      input.form-control(id='form-lastname' type='text' name='form_lastname' required)
+      input.form-control(id='form-lastname' type='text' name='form_lastname' value=lastname required)
     p.form-group
       label(for='form-password') Mot de passe
       input.form-control(id='form-password' type='password' name='form_password' required)
