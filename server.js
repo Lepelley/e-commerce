@@ -18,7 +18,13 @@ app.set('view engine', 'pug')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser('keyboard cat'))
-app.use(session({ cookie: { maxAge: 60000 } }))
+app.use(session({
+  secret: config.key,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 3600000 }
+}))
+
 
 app.use(flash())
 app.use((req, res, next) => {
@@ -27,6 +33,8 @@ app.use((req, res, next) => {
 })
 
 app.use('/', routes)
+
+require('./app/passport')(app)
 
 mongoose.connect(
   config.mongodb,

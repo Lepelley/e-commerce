@@ -1,0 +1,15 @@
+extends ../layout.pug
+
+block content
+  h1 Liste des articles en vente
+
+  div.item-list
+    each item, index in items
+     p
+       span= item.name
+       br
+       img(src='https://picsum.photos/200/300?random='+index alt=item.name)
+       br
+       span Prix #{item.price} €
+    else
+      p Aucun article disponible

@@ -6,4 +6,4 @@ const schema = new mongoose.Schema({
   date: { type: Date, default: Date.now }
 })
 
-module.exports = mongoose.model('Item', schema)
+module.exports = mongoose.model('item', schema)
