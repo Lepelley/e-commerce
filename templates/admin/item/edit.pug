@@ -1,0 +1,18 @@
+extends ../../layout.pug
+
+block content
+  h1 Editer l'article #{item.name}
+
+  form(method='post')
+    p.form-group
+      label(for='form-name') Nom de l'article
+      input#form-name.form-control(type='text' name='form_name' value=item.name required)
+    p.form-group
+      label(for='form-price') Prix
+      input#form-price.form-control(type='number' name='form_price' value=item.price required)
+
+    p
+      button.btn.btn-primary(type='submit') Modifier
+
+  p
+    a(href='/admin/list') Revenir à la liste des articles

@@ -25,16 +25,15 @@ app.use(session({
   cookie: { maxAge: 3600000 }
 }))
 
-
 app.use(flash())
 app.use((req, res, next) => {
   res.locals.session = req.session
   next()
 })
 
-app.use('/', routes)
-
 require('./app/passport')(app)
+
+app.use('/', routes)
 
 mongoose.connect(
   config.mongodb,

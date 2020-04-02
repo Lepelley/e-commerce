@@ -1,0 +1,12 @@
+extends ../layout.pug
+
+block content
+  h1= item.name
+
+  p
+    img(src='https://picsum.photos/200/300?random='+index alt=item.name)
+    br
+    span Prix #{item.price} €
+
+  p
+    a(href='/list') Revenir à la liste des articles

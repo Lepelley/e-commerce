@@ -24,10 +24,11 @@ module.exports = class UserRepository {
 
   async checkUser (email, password) {
     const user = await UserSchema.findOne({ email })
-    const match = await bcrypt.compare(password, user.password)
-
-    if (match) {
-      return user
+    if (user) {
+      const match = await bcrypt.compare(password, user.password)
+      if (match) {
+        return user
+      }
     }
     return false
   }

@@ -9,25 +9,24 @@ module.exports = (app) => {
   app.use(passport.session())
 
   passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-    _passReqToCallback: true
+    usernameField: 'form_email',
+    passwordField: 'form_password',
+    passReqToCallback: true
   },
-  (username, password, done) => {
-    const User = new UserRepository()
-
-    User.connect(username, password).then((user) => {
-      request.session.user = user.email
-      return done(null, user)
-    }, (error) => {
-      if (error) {
-        console.error(error)
+  (request, email, password, done) => {
+    ;(new UserRepository()).checkUser(email, password).then((user) => {
+      if (user === false) {
+        request.flash('error', 'L\'authentification a échouée')
+        return done(null, false)
       }
-      return done(
-        null,
-        false,
-        { message: 'L\'authentification a échouée' }
-      )
+      request.session.user = {
+        connected: true,
+        email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname
+      }
+      request.flash('flash', 'Vous êtes maintenant connecté !')
+      return done(null, user)
     })
   }))
 

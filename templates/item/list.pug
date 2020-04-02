@@ -6,9 +6,9 @@ block content
   div.item-list
     each item, index in items
      p
-       span= item.name
-       br
-       img(src='https://picsum.photos/200/300?random='+index alt=item.name)
+       a(href='/show/'+item.id) #{item.name}
+        br
+        img(src='https://picsum.photos/200/300?random='+index alt=item.name)
        br
        span Prix #{item.price} €
     else

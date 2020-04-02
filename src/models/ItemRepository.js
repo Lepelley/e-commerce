@@ -2,12 +2,14 @@ const ItemSchema = require('./ItemSchema')
 
 module.exports = class UserRepository {
   findAll () {
-    ItemSchema.find({}, (error, docs) => {
-      if (error) {
-        throw error
-      }
-      console.log(docs)
-      return docs
-    })
+    return ItemSchema.find({})
+  }
+
+  find (id) {
+    return ItemSchema.findOne({ _id: id })
+  }
+
+  update (id, item) {
+    return ItemSchema.updateOne({ _id: id }, item)
   }
 }
