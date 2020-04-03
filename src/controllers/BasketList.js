@@ -1,7 +1,16 @@
+const ItemRepository = require('../models/ItemRepository')
+
 module.exports = class BasketList {
-  print (request, response) {
+  async print (request, response) {
     if (request.session.user) {
-      response.render('basket/list')
+      const items = []
+      if (request.session.basket) {
+        const repo = new ItemRepository()
+        for (const item of request.session.basket) {
+          items.push(await repo.find(item))
+        }
+      }
+      response.render('basket/list', { items })
     } else {
       request.flash('error', 'Vous devez être connecté pour accéder à votre panier.')
       response.redirect('/login')

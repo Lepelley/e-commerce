@@ -8,6 +8,7 @@ const UserLogout = require('../src/controllers/UserLogout')
 const ItemList = require('../src/controllers/ItemList')
 const ItemShow = require('../src/controllers/ItemShow')
 const BasketList = require('../src/controllers/BasketList')
+const BasketAdd = require('../src/controllers/BasketAdd')
 const AdminItemList = require('../src/controllers/AdminItemList')
 const ItemEdit = require('../src/controllers/ItemEdit')
 
@@ -20,16 +21,29 @@ router.get('/login', (request, response) => (new UserLogin()).print(request, res
 // router.post('/login', (request, response) => (new UserLogin()).process(request, response))
 router.get('/logout', (request, response) => (new UserLogout()).process(request, response))
 
+// Passport
 router.post('/login', (request, response) => {
   passport.authenticate(
     'local',
     { successRedirect: '/', failureRedirect: '/login' }
   )(request, response)
 })
+router.get('/login/github', passport.authenticate('github', { scope: ['profile'] }))
+router.get('/login/github/callback', passport.authenticate(
+  'github',
+  { successRedirect: '/', failureRedirect: '/login' }
+))
+
+// router.get('/login/google', passport.authenticate('google', { scope: ['profile'] }))
+// router.get('/login/google/callback', passport.authenticate('google', {
+//   successRedirect: '/',
+//   failureRedirect: '/login'
+// }))
 
 router.get('/list', (request, response) => (new ItemList()).print(request, response))
 router.get('/show/:id', (request, response) => (new ItemShow()).print(request, response))
 router.get('/basket', (request, response) => (new BasketList()).print(request, response))
+router.get('/basket/add/:id', (request, response) => (new BasketAdd()).process(request, response))
 
 router.get('/admin/list', (request, response) => (new AdminItemList()).print(request, response))
 router.get('/admin/edit/:id', (request, response) => (new ItemEdit()).print(request, response))

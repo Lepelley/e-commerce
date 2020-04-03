@@ -10,6 +10,12 @@ block content
     p.form-group
       label(for='form-price') Prix
       input#form-price.form-control(type='number' name='form_price' value=item.price required)
+    p.form-group
+      label(for='form-image') Image
+      input#form-image.form-control(type='url' name='form_image' value=item.image required)
+    p.form-group
+      label(for='form-description') Description
+      textarea#form-description.form-control(name='form_description' required) #{item.description}
 
     p
       button.btn.btn-primary(type='submit') Modifier

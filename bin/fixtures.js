@@ -1,5 +1,5 @@
 const process = require('process')
-const faker = require('faker')
+const faker = require('faker/locale/fr')
 const chalk = require('chalk')
 const mongoose = require('mongoose')
 
@@ -22,9 +22,12 @@ faker.locale = 'fr'
 
 console.log(`Ajout de ${process.argv[2]} produits : `)
 for (let index = 0; index < process.argv[2]; index++) {
+  const name = faker.commerce.product()
   ItemSchema.create({
-    name: faker.commerce.productName(),
-    price: faker.commerce.price()
+    name,
+    price: faker.commerce.price(),
+    image: 'https://picsum.photos/seed/' + name + '/200/300',
+    description: faker.lorem.paragraph()
   }, (error, item) => {
     if (error) {
       console.error(error)

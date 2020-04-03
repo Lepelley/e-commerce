@@ -4,9 +4,16 @@ block content
   h1= item.name
 
   p
-    img(src='https://picsum.photos/200/300?random='+index alt=item.name)
+    img(src=item.image alt=item.name)
     br
     span Prix #{item.price} €
+    br
+    if (session.user)
+      a.btn.btn-primary(href='/basket/add/' + item.id) Ajouter au panier
+    else
+      a(href='/login') Veuillez vous connecter pour ajouter un article au panier
+
+  p Description: #{item.description}
 
   p
     a(href='/list') Revenir à la liste des articles

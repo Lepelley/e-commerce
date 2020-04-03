@@ -8,7 +8,12 @@ module.exports = class ItemEdit {
   async process (request, response) {
     const result = await (new ItemRepository()).update(
       request.params.id,
-      { name: request.body.form_name, price: request.body.form_price }
+      {
+        name: request.body.form_name,
+        price: request.body.form_price,
+        description: request.body.form_description,
+        image: request.body.form_image
+      }
     )
 
     if (result.n === 1) {

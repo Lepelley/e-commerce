@@ -17,9 +17,9 @@ app.set('views', path.join(__dirname, 'templates'))
 app.set('view engine', 'pug')
 
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cookieParser('keyboard cat'))
+app.use(cookieParser(config.secretKey))
 app.use(session({
-  secret: config.key,
+  secret: config.secretKey,
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 3600000 }

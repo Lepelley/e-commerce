@@ -2,4 +2,15 @@ extends ../layout.pug
 
 block content
   h1 Votre panier
-  p Aucun article disponible
+  if (session.basket)
+    - cost = 0
+    ul
+      each item in items
+        - cost += item.price
+        li
+          a(href='/show/' + item.id) #{item.name} (Prix : #{item.price} €)
+    p Coût du panier : #{cost} €
+    p
+      button#buyout.btn.btn-primary Valider le panier
+  else
+    p Aucun article disponible

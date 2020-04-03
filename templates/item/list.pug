@@ -5,11 +5,14 @@ block content
 
   div.item-list
     each item, index in items
-     p
-       a(href='/show/'+item.id) #{item.name}
+      p
+        a(href='/show/' + item.id) #{item.name}
         br
-        img(src='https://picsum.photos/200/300?random='+index alt=item.name)
-       br
-       span Prix #{item.price} €
+        img(src=item.image alt=item.name)
+        br
+        span Prix #{item.price} €
+        br
+        if (session.user)
+          a.btn.btn-primary(href='/basket/add/' + item.id) Ajouter au panier
     else
       p Aucun article disponible
